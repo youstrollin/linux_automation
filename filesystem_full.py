@@ -9,3 +9,4 @@ def fscheck(fsname): # organizes contents of /proc/mount in mydict with mountpoi
         return mydict(fsname)
     else:
         return False
+#testing github push
