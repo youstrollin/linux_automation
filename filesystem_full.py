@@ -1,5 +1,6 @@
 #
 # Pending: better fsname sanitization REGEX, maybe change exceptions to return false and end script in MAIN with return message of one failed.
+# maybe inodecheck should be value = 0 and raise exception if < 0 which shouldn't happen in normal run
 #
 import os
 import subprocess
