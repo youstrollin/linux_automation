@@ -10,6 +10,9 @@
 
   <p align="center">
     Misc scripts in Python for Linux automation.
+    <a href="https://www.linkedin.com/in/eduardo-amma-5b8a9831">LinkedIn</a>
+    ·
+    <a href="mailto:eduardoamma@gmail.com">Email</a>
   </p>
 </p>
 
