@@ -22,7 +22,7 @@ def vmcreate(devids):
             if re.match(r"^\/dev\/sd[a-z]+", i): predevices.append(i.split()[0]) #runs inq -no_dots, output that matches /dev/sdX+ is stored as predevices list
             else: MyException("No valid devices matched on INQ command output.")
         piperead = subprocess.Popen(commandls, stdout=subprocess.PIPE, stderr=devnull)
-        for i in piperead.stdout.readlines(): scsi_list.append('/sys/class/scsi_host/{0}/scan'.format(i.strip´())) #runs ls -1 /sys/class/scsi_host, output is opened as file and --- written
+        for i in piperead.stdout.readlines(): scsi_list.append('/sys/class/scsi_host/{0}/scan'.format(i.strip())) #runs ls -1 /sys/class/scsi_host, output is opened as file and --- written
         for i in scsi_list:
             with open(i, 'w') as outfile: outfile.write("---\n")
         piperead = subprocess.Popen(commandinq, stdout=subprocess.PIPE, stderr=devnull) #devnull because 2.6 compatibility, if not subprocess.DEVNULL
