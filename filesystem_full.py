@@ -1,6 +1,10 @@
+#
+# Pending: better fsname sanitization REGEX, maybe change exceptions to return false and end script in MAIN with return message of one failed.
+#
 import os
 import subprocess
 import re
+import sys
 class MyException(Exception):
     pass
 def fscheck(fsname): # organizes contents of /proc/mount in mydict with mountpoint as key, rest as values, if input exists as mountpoint, returns value, else returns false.
@@ -52,3 +56,12 @@ def usagecheck(fsname): # Verifies whether fs usage is over threshold value or n
             raise MyException("Filesystem usage percentage math error.")
     else:
         raise MyException("Filesystem name failed additional REGEX.") #usagecheck function tested 23/6 OK py2.6
+
+def main():
+    myarguments = "".join(sys.argv[1]) #limited to first argument "fsname" for now.
+    if fscheck(myarguments) and inodecheck(myarguments) and usagecheck(myarguments):
+        # FILE REMOVAL or LISTING FUNCTION CALL DEPENDING ON EXECUTION ARGUMENT
+    else:
+         # Maybe remove custom exceptions from functions and handle here with FALSE returned?
+if __name__ == "__main__":
+    main()
