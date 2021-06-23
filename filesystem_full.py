@@ -7,14 +7,15 @@ def fscheck(fsname): # organizes contents of /proc/mount in mydict with mountpoi
     mydict = {}
     if re.match(r"^\/[0-9a-zA-Z_.\/]+", fsname): #REVIEW BETTER SANITIZATION METHOD
         command = ['cat', '/proc/mounts']
-        fslist = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
-        for i in fslist.stdout.readlines():
-            mylist = i.strip().split(' ')
-            mydict[mylist[1]] = mylist[:1] + mylist[2:]
-        if fsname in mydict:
-            return mydict(fsname)
-        else:
-            return False
+        with open(os.devnull, 'w') as devnull:
+            fslist = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=devnull) #devnull because 2.6 compatibility
+            for i in fslist.stdout.readlines():
+              mylist = i.strip().split(' ')
+              mydict[mylist[1]] = mylist[:1] + mylist[2:]
+             if fsname in mydict:
+              return mydict(fsname)
+          else:
+              return False
     else:
         raise MyException("Provided filesystem path is not valid.")
 
