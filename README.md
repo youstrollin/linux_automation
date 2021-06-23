@@ -8,6 +8,6 @@
   <h3 align="center">Linux automation stuff</h3>
 
   <p align="center">
-    Python scripts for Linux automation.
+    Misc scripts in Python for Linux automation.
   </p>
 </p>
