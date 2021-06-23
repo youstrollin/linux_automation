@@ -12,9 +12,9 @@ def fscheck(fsname): # organizes contents of /proc/mount in mydict with mountpoi
             for i in fslist.stdout.readlines():
               mylist = i.strip().split(' ')
               mydict[mylist[1]] = mylist[:1] + mylist[2:]
-             if fsname in mydict:
-              return mydict(fsname)
-          else:
+            if fsname in mydict:
+                return mydict(fsname)
+            else:
               return False
     else:
         raise MyException("Provided filesystem path is not valid.")
